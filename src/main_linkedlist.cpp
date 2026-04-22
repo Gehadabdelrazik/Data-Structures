@@ -1,0 +1,7 @@
+#include "structures/linkedlist.h"
+#include "utils/loader.h"
+#include "algorithm/sorting.h"
+#include "algorithm/searching.h"
+#include "analysis/carbon.h"
+#include "analysis/agegroup.h"
+#include "utils/display.h"
