@@ -1,11 +1,13 @@
 #include "linkedlist.h"
 #include "node.h"
-#include "linkedlist.h"
+
+
 
 // Constructor
 LinkedList::LinkedList() {
     head = nullptr;
 }
+
 
 // Insert at end
 void LinkedList::insertEnd(Resident r) {
