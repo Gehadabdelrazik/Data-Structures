@@ -11,11 +11,12 @@ int main() {
 
     LinkedList cityA;
     LinkedList cityB;
+
     LinkedList cityC;
 
-    loadDatasetToList("../data/dataset1-cityA.csv", cityA);
-    loadDatasetToList("../data/dataset2-cityB.csv", cityB);
-    loadDatasetToList("../data/dataset3-cityC.csv", cityC);
+    loadDatasetToList("data/dataset1-cityA.csv", cityA);
+    loadDatasetToList("data/dataset2-cityB.csv", cityB);
+    loadDatasetToList("data/dataset3-cityC.csv", cityC);
 
     cout << "\n========== LINKED LIST ANALYSIS ==========\n";
 

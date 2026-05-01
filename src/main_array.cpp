@@ -14,9 +14,9 @@ int main() {
     ResidentData cityB(1000);
     ResidentData cityC(1000);
 
-    loadDataset("../data/dataset1-cityA.csv", cityA);
-    loadDataset("../data/dataset2-cityB.csv", cityB);
-    loadDataset("../data/dataset3-cityC.csv", cityC);
+    loadDataset("data/dataset1-cityA.csv", cityA);
+    loadDataset("data/dataset2-cityB.csv", cityB);
+    loadDataset("data/dataset3-cityC.csv", cityC);
 
     cout << "\n========== ARRAY ANALYSIS ==========\n";
 
@@ -26,12 +26,8 @@ int main() {
     analyseAgeGroupsArray(cityC, "City C");
 
     // Carbon Analysis
-    runCarbonAnalysis(
-        cityA.getData(), cityA.getSize(),
-        cityB.getData(), cityB.getSize(),
-        cityC.getData(), cityC.getSize()
-    );
-
+    runCarbonAnalysis(cityA, cityB, cityC);
+ 
     // Sorting
     cout << "\n========== ARRAY SORTING ==========\n";
     runArraySortingExperiment(cityA.getData(), cityA.getSize());

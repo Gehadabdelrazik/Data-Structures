@@ -1,39 +1,29 @@
 #ifndef CARBON_H
 #define CARBON_H
- 
+
 #include "../structures/resident.h"
-#include "agegroup.h" 
+#include "../structures/array.h"
 #include <string>
 using namespace std;
 
-//define constants for transport modes and their count for now since we do not do that anywhere else
-//suggestion we create constants file
-
-
-
-//5a (general formula)
 float calculateResidentEmission(const Resident& r);
 
-//5a (total emission for a dataset)
-float getTotalDatasetEmission(Resident* residents, int size);
+float getTotalDatasetEmission(ResidentData& data);
 
+void displayEmissionByMode(ResidentData& data, const string& datasetName);
 
-//5b (emission by mode of transport)
-void displayEmissionByMode(Resident* residents, int size, string datasetName);
+void displayDatasetAnalysis(ResidentData& data, const string& datasetName);
 
+void displayCrossDatasetSummary(
+    ResidentData& dataA,
+    ResidentData& dataB,
+    ResidentData& dataC
+);
 
-//full table for one dataset
-void displayDatasetAnalysis(Resident* residents, int size, string datasetName);
+void runCarbonAnalysis(
+    ResidentData& dataA,
+    ResidentData& dataB,
+    ResidentData& dataC
+);
 
-//dataset comparision by age_group
-void displayCrossDatasetSummary(Resident* datasetA, int sizeA,
-                                 Resident* datasetB, int sizeB,
-                                 Resident* datasetC, int sizeC);
-
-                            
-//all
-void runCarbonAnalysis(Resident* datasetA, int sizeA,
-                       Resident* datasetB, int sizeB,
-                       Resident* datasetC, int sizeC);
- 
 #endif
