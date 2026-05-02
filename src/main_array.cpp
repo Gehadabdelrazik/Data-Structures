@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <locale>   
 using namespace std;
 
 void displayArray(ResidentData& data, string name) {
@@ -37,6 +38,8 @@ void displayArray(ResidentData& data, string name) {
 }
 
 int main() {
+    setlocale(LC_ALL, "");  
+
     ResidentData cityA(1000);
     ResidentData cityB(1000);
     ResidentData cityC(1000);
@@ -61,6 +64,7 @@ int main() {
         cin >> choice;
 
         switch (choice) {
+
         case 1:
             displayArray(cityA, "Dataset 1 - City A");
             break;
@@ -83,14 +87,40 @@ int main() {
             runCarbonAnalysis(cityA, cityB, cityC);
             break;
 
+        
         case 6:
-            cout << "\n========== ARRAY SORTING ==========\n";
+            cout << "\n========== SORTING EXPERIMENT ==========\n";
+
+            cout << "\n--- City A ---\n";
             runArraySortingExperiment(cityA.getData(), cityA.getSize());
+
+            cout << "\n--- City B ---\n";
+            runArraySortingExperiment(cityB.getData(), cityB.getSize());
+
+            cout << "\n--- City C ---\n";
+            runArraySortingExperiment(cityC.getData(), cityC.getSize());
+
             break;
 
+       
         case 7:
-            cout << "\n========== ARRAY SEARCHING ==========\n";
-            runArraySearchingExperiment(cityA.getData(), cityA.getSize());
+            cout << "\n========== SEARCHING EXPERIMENT ==========\n";
+
+            cout << "\n--- City A ---\n";
+            searchArrayByAgeGroup(cityA.getData(), cityA.getSize(), 26, 45);
+            searchArrayByTransport(cityA.getData(), cityA.getSize(), "Car");
+            searchArrayByDistance(cityA.getData(), cityA.getSize(), 15);
+
+            cout << "\n--- City B ---\n";
+            searchArrayByAgeGroup(cityB.getData(), cityB.getSize(), 26, 45);
+            searchArrayByTransport(cityB.getData(), cityB.getSize(), "Car");
+            searchArrayByDistance(cityB.getData(), cityB.getSize(), 15);
+
+            cout << "\n--- City C ---\n";
+            searchArrayByAgeGroup(cityC.getData(), cityC.getSize(), 26, 45);
+            searchArrayByTransport(cityC.getData(), cityC.getSize(), "Car");
+            searchArrayByDistance(cityC.getData(), cityC.getSize(), 15);
+
             break;
 
         case 0:
