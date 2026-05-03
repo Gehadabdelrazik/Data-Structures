@@ -3,10 +3,7 @@
 #include <iomanip>
 #include <string>
 using namespace std;
- 
-// -------------------------------------------------------
-// CONSTANTS
-// -------------------------------------------------------
+
  
 const int NUM_AGE_GROUPS = 5;
  
@@ -24,10 +21,7 @@ const string TRANSPORT_MODES[NUM_TRANSPORT_MODES] = {
     "Car", "Bus", "Bicycle", "Walking", "School Bus", "Carpool"
 };
  
-// -------------------------------------------------------
-// HELPER: getAgeGroupIndex
-// Returns 0-4 for valid ages, -1 for out of range
-// -------------------------------------------------------
+
 int getAgeGroupIndex(int age) {
     if (age >= 6  && age <= 17)  return 0;
     if (age >= 18 && age <= 25)  return 1;
@@ -36,21 +30,14 @@ int getAgeGroupIndex(int age) {
     if (age >= 61 && age <= 100) return 4;
     return -1;
 }
- 
-// -------------------------------------------------------
-// HELPER: getAgeGroup
-// Public function - returns the string label for an age
-// -------------------------------------------------------
+
 string getAgeGroup(int age) {
     int idx = getAgeGroupIndex(age);
     if (idx == -1) return "Unknown";
     return AGE_GROUP_LABELS[idx];
 }
  
-// -------------------------------------------------------
-// HELPER: getTransportIndex
-// Returns 0-5 for known transport modes, -1 if not found
-// -------------------------------------------------------
+
 int getTransportIndex(const string& mode) {
     for (int i = 0; i < NUM_TRANSPORT_MODES; i++) {
         if (TRANSPORT_MODES[i] == mode) return i;
@@ -58,17 +45,8 @@ int getTransportIndex(const string& mode) {
     return -1;
 }
  
-// -------------------------------------------------------
-// HELPER: printAgeGroupTable
-//
-// Prints the full age group analysis table.
-// Shows emission per transport per age group as required.
-//
-// transportCount[group][transport]    - resident count
-// transportEmission[group][transport] - total CO2 per transport
-// totalEmission[group]                - total CO2 for whole group
-// residentCount[group]                - total residents in group
-// -------------------------------------------------------
+
+
 void printAgeGroupTable(
     int    transportCount   [NUM_AGE_GROUPS][6],
     double transportEmission[NUM_AGE_GROUPS][6],
@@ -96,7 +74,7 @@ void printAgeGroupTable(
              << endl;
         cout << string(68, '-') << endl;
  
-        // Find most preferred transport (highest resident count)
+ 
         int maxCount     = 0;
         int maxTransport = 0;
         for (int t = 0; t < NUM_TRANSPORT_MODES; t++) {
@@ -106,7 +84,7 @@ void printAgeGroupTable(
             }
         }
  
-        // Print one row per transport mode that exists in this group
+
         for (int t = 0; t < NUM_TRANSPORT_MODES; t++) {
             if (transportCount[g][t] == 0) continue;
  
@@ -140,9 +118,9 @@ void printAgeGroupTable(
     cout << "========================================================\n" << endl;
 }
  
-// -------------------------------------------------------
+
 // ARRAY-BASED Age Group Analysis
-// -------------------------------------------------------
+
 void analyseAgeGroupsArray(ResidentData& data, const string& datasetName) {
  
     int    transportCount   [NUM_AGE_GROUPS][NUM_TRANSPORT_MODES] = {};
@@ -161,7 +139,7 @@ void analyseAgeGroupsArray(ResidentData& data, const string& datasetName) {
         int t = getTransportIndex(r.ModeOfTransport);
         if (t == -1) continue;
  
-        // Monthly carbon emission: distance x factor x days
+        
         double emission = r.DailyDistance * r.CarbonEmissionFactor * r.AverageDayPerMonth;
  
         transportCount   [g][t]++;
@@ -173,9 +151,9 @@ void analyseAgeGroupsArray(ResidentData& data, const string& datasetName) {
     printAgeGroupTable(transportCount, transportEmission, totalEmission, residentCount, datasetName);
 }
  
-// -------------------------------------------------------
+
 // LINKED LIST-BASED Age Group Analysis
-// -------------------------------------------------------
+
 void analyseAgeGroupsLinkedList(LinkedList& list, const string& datasetName) {
  
     int    transportCount   [NUM_AGE_GROUPS][NUM_TRANSPORT_MODES] = {};
