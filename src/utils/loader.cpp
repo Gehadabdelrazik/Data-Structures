@@ -7,6 +7,53 @@
 #include <iostream>
 
 using namespace std;
+
+bool loadDatasetToList(const string& filename, LinkedList& list) {
+
+    ifstream file(filename);
+
+    if (!file.is_open()) {
+        cout << "ERROR: Could not open file: " << filename << endl;
+        return false;
+    }
+
+    string line;
+    getline(file, line); // skip header
+
+    while (getline(file, line)) {
+        if (line.empty()) continue;
+
+        stringstream ss(line);
+        string token;
+
+        Resident r;
+
+        getline(ss, token, ',');
+        r.ResidentID = token;
+
+        getline(ss, token, ',');
+        r.Age = stoi(token);
+
+        getline(ss, token, ',');
+        r.ModeOfTransport = token;
+
+        getline(ss, token, ',');
+        r.DailyDistance = stof(token);
+
+        getline(ss, token, ',');
+        r.CarbonEmissionFactor = stof(token);
+
+        getline(ss, token, ',');
+        r.AverageDayPerMonth = stoi(token);
+
+        list.insertEnd(r);
+    }
+
+    file.close();
+    cout << "Loaded (Linked List): " << filename << endl;
+
+    return true;
+}
 bool loadDataset(const string& filename, ResidentData& dataset) {
  
     // Open the CSV file
@@ -61,6 +108,7 @@ bool loadDataset(const string& filename, ResidentData& dataset) {
         // Add the resident into the array
         dataset.addResident(r);
     }
+    
  
     file.close();
     cout << "Loaded: " << filename

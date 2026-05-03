@@ -1,6 +1,5 @@
 #include "searching.h"
 #include <iostream>
-#include <chrono>
 
 using namespace std;
 
@@ -24,6 +23,38 @@ int linearSearchArrayByAge(Resident arr[], int size, int age) {
         }
     }
     return -1;
+}
+
+// NEW REQUIRED SEARCHES
+
+void searchArrayByAgeGroup(Resident arr[], int size, int minAge, int maxAge) {
+    cout << "\n[Array] Age Group (" << minAge << "-" << maxAge << "): ";
+    for (int i = 0; i < size; i++) {
+        if (arr[i].Age >= minAge && arr[i].Age <= maxAge) {
+            cout << arr[i].ResidentID << " ";
+        }
+    }
+    cout << endl;
+}
+
+void searchArrayByTransport(Resident arr[], int size, string mode) {
+    cout << "\n[Array] Transport (" << mode << "): ";
+    for (int i = 0; i < size; i++) {
+        if (arr[i].ModeOfTransport == mode) {
+            cout << arr[i].ResidentID << " ";
+        }
+    }
+    cout << endl;
+}
+
+void searchArrayByDistance(Resident arr[], int size, double minDistance) {
+    cout << "\n[Array] Distance > " << minDistance << ": ";
+    for (int i = 0; i < size; i++) {
+        if (arr[i].DailyDistance > minDistance) {
+            cout << arr[i].ResidentID << " ";
+        }
+    }
+    cout << endl;
 }
 
 // =====================
@@ -54,52 +85,43 @@ Node* linearSearchListByAge(Node* head, int age) {
     return nullptr;
 }
 
-// =====================
-// SEARCHING EXPERIMENTS
-// =====================
+// NEW REQUIRED SEARCHES
 
-void runArraySearchingExperiment(Resident arr[], int size) {
+void searchLinkedListByAgeGroup(Node* head, int minAge, int maxAge) {
+    cout << "\n[Linked List] Age Group (" << minAge << "-" << maxAge << "): ";
+    Node* current = head;
 
-    string testID = arr[size / 2].ResidentID; // middle element
-    int testAge = arr[size / 2].Age;
-
-    auto start = chrono::high_resolution_clock::now();
-    linearSearchArrayByID(arr, size, testID);
-    auto end = chrono::high_resolution_clock::now();
-
-    cout << "Array Search by ID: "
-         << chrono::duration_cast<chrono::microseconds>(end - start).count()
-         << " microseconds" << endl;
-
-    start = chrono::high_resolution_clock::now();
-    linearSearchArrayByAge(arr, size, testAge);
-    end = chrono::high_resolution_clock::now();
-
-    cout << "Array Search by Age: "
-         << chrono::duration_cast<chrono::microseconds>(end - start).count()
-         << " microseconds" << endl;
+    while (current != nullptr) {
+        if (current->data.Age >= minAge && current->data.Age <= maxAge) {
+            cout << current->data.ResidentID << " ";
+        }
+        current = current->next;
+    }
+    cout << endl;
 }
 
-void runLinkedListSearchingExperiment(Node* head) {
+void searchLinkedListByTransport(Node* head, string mode) {
+    cout << "\n[Linked List] Transport (" << mode << "): ";
+    Node* current = head;
 
-    if (!head) return;
+    while (current != nullptr) {
+        if (current->data.ModeOfTransport == mode) {
+            cout << current->data.ResidentID << " ";
+        }
+        current = current->next;
+    }
+    cout << endl;
+}
 
-    string testID = head->data.ResidentID;
-    int testAge = head->data.Age;
+void searchLinkedListByDistance(Node* head, double minDistance) {
+    cout << "\n[Linked List] Distance > " << minDistance << ": ";
+    Node* current = head;
 
-    auto start = chrono::high_resolution_clock::now();
-    linearSearchListByID(head, testID);
-    auto end = chrono::high_resolution_clock::now();
-
-    cout << "Linked List Search by ID: "
-         << chrono::duration_cast<chrono::microseconds>(end - start).count()
-         << " microseconds" << endl;
-
-    start = chrono::high_resolution_clock::now();
-    linearSearchListByAge(head, testAge);
-    auto end2 = chrono::high_resolution_clock::now();
-
-    cout << "Linked List Search by Age: "
-         << chrono::duration_cast<chrono::microseconds>(end2 - start).count()
-         << " microseconds" << endl;
+    while (current != nullptr) {
+        if (current->data.DailyDistance > minDistance) {
+            cout << current->data.ResidentID << " ";
+        }
+        current = current->next;
+    }
+    cout << endl;
 }
