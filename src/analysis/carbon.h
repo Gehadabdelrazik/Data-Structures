@@ -1,39 +1,58 @@
 #ifndef CARBON_H
 #define CARBON_H
- 
+
 #include "../structures/resident.h"
-#include "agegroup.h" 
+#include "../structures/array.h"
+#include "../structures/linkedlist.h"
 #include <string>
 using namespace std;
 
-//define constants for transport modes and their count for now since we do not do that anywhere else
-//suggestion we create constants file
 
-
-
-//5a (general formula)
+// 5a. Calculate carbon emission for a single resident
+//     Formula: DailyDistance x CarbonEmissionFactor x AverageDayPerMonth
 float calculateResidentEmission(const Resident& r);
 
-//5a (total emission for a dataset)
-float getTotalDatasetEmission(Resident* residents, int size);
+
+//array-based implementation
+// 5a. Get total emission for an array dataset
+float getTotalDatasetEmission(ResidentData& data);
+
+// 5b. Display emissions broken down by mode of transport (array)
+void displayEmissionByMode(ResidentData& data, const string& datasetName);
+
+// 5a + 5b. Full analysis table for one array dataset
+void displayDatasetAnalysis(ResidentData& data, const string& datasetName);
+
+// 5c + 5d. Cross-dataset comparison table by age group (arrays)
+void displayCrossDatasetSummary(ResidentData& dataA,
+                                ResidentData& dataB,
+                                ResidentData& dataC);
+
+// MASTER: Run all of Task 5 for array-based datasets
+void runCarbonAnalysis(ResidentData& dataA,
+                       ResidentData& dataB,
+                       ResidentData& dataC);
 
 
-//5b (emission by mode of transport)
-void displayEmissionByMode(Resident* residents, int size, string datasetName);
+                       
+//linked list-based implementation
+// 5a. Get total emission for a linked list dataset
+float getTotalDatasetEmissionLL(LinkedList& list);
 
+// 5b. Display emissions broken down by mode of transport (linked list)
+void displayEmissionByModeLL(LinkedList& list, const string& datasetName);
 
-//full table for one dataset
-void displayDatasetAnalysis(Resident* residents, int size, string datasetName);
+// 5a + 5b. Full analysis table for one linked list dataset
+void displayDatasetAnalysisLL(LinkedList& list, const string& datasetName);
 
-//dataset comparision by age_group
-void displayCrossDatasetSummary(Resident* datasetA, int sizeA,
-                                 Resident* datasetB, int sizeB,
-                                 Resident* datasetC, int sizeC);
+// 5c + 5d. Cross-dataset comparison table by age group (linked lists)
+void displayCrossDatasetSummaryLL(LinkedList& listA,
+                                  LinkedList& listB,
+                                  LinkedList& listC);
 
-                            
-//all
-void runCarbonAnalysis(Resident* datasetA, int sizeA,
-                       Resident* datasetB, int sizeB,
-                       Resident* datasetC, int sizeC);
- 
+// MASTER: Run all of Task 5 for linked list-based datasets
+void runCarbonAnalysisLL(LinkedList& listA,
+                         LinkedList& listB,
+                         LinkedList& listC);
+
 #endif
