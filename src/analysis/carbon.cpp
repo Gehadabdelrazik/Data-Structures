@@ -131,7 +131,7 @@ void displayCrossDatasetSummary(ResidentData& dataA,
  
     float grandA = 0, grandB = 0, grandC = 0;
  
-    for (int g = 0; g < C_NUM_AGE_GROUPS; g++) {
+    for (int g = 0; g < C_NUM_AGE_GROUPS; g++) { // for each age group
  
         float emA = 0, emB = 0, emC = 0;
  
@@ -179,7 +179,7 @@ void displayCrossDatasetSummary(ResidentData& dataA,
 
 
 
-void runCarbonAnalysis(ResidentData& dataA,
+void runCarbonAnalysis(ResidentData& dataA, 
                        ResidentData& dataB,
                        ResidentData& dataC) {
  

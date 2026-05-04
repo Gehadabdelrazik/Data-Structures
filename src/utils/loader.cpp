@@ -54,6 +54,7 @@ bool loadDatasetToList(const string& filename, LinkedList& list) {
 
     return true;
 }
+
 bool loadDataset(const string& filename, ResidentData& dataset) {
  
     // Open the CSV file
