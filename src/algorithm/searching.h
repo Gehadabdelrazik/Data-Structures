@@ -7,9 +7,8 @@
 
 using namespace std;
 
-// =====================
-// ARRAY SEARCHING
-// =====================
+
+
 int linearSearchArrayByID(Resident arr[], int size, string id);
 int linearSearchArrayByAge(Resident arr[], int size, int age);
 
@@ -18,9 +17,7 @@ void searchArrayByAgeGroup(Resident arr[], int size, int minAge, int maxAge);
 void searchArrayByTransport(Resident arr[], int size, string mode);
 void searchArrayByDistance(Resident arr[], int size, double minDistance);
 
-// =====================
-// LINKED LIST SEARCHING
-// =====================
+
 Node* linearSearchListByID(Node* head, string id);
 Node* linearSearchListByAge(Node* head, int age);
 

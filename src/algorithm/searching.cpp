@@ -3,9 +3,7 @@
 
 using namespace std;
 
-// =====================
-// ARRAY SEARCHING
-// =====================
+
 
 int linearSearchArrayByID(Resident arr[], int size, string id) {
     for (int i = 0; i < size; i++) {
@@ -25,7 +23,6 @@ int linearSearchArrayByAge(Resident arr[], int size, int age) {
     return -1;
 }
 
-// NEW REQUIRED SEARCHES
 
 void searchArrayByAgeGroup(Resident arr[], int size, int minAge, int maxAge) {
     cout << "\n[Array] Age Group (" << minAge << "-" << maxAge << "): ";
@@ -57,9 +54,7 @@ void searchArrayByDistance(Resident arr[], int size, double minDistance) {
     cout << endl;
 }
 
-// =====================
-// LINKED LIST SEARCHING
-// =====================
+
 
 Node* linearSearchListByID(Node* head, string id) {
     Node* current = head;
@@ -85,7 +80,6 @@ Node* linearSearchListByAge(Node* head, int age) {
     return nullptr;
 }
 
-// NEW REQUIRED SEARCHES
 
 void searchLinkedListByAgeGroup(Node* head, int minAge, int maxAge) {
     cout << "\n[Linked List] Age Group (" << minAge << "-" << maxAge << "): ";

@@ -5,13 +5,13 @@
 using namespace std;
 
 
-// Constructor
+
 LinkedList::LinkedList() {
     head = nullptr;
 }
 
 
-// Insert at end
+
 void LinkedList::insertEnd(Resident r) {
     Node* newNode = new Node;
     newNode->data = r;
@@ -29,7 +29,7 @@ void LinkedList::insertEnd(Resident r) {
         current->next = newNode;
     }
 }
-// Display all residents in table format
+
 void LinkedList::displayAll() {
     if (head == nullptr) {
         cout << "Linked list is empty." << endl;
@@ -64,7 +64,7 @@ void LinkedList::displayAll() {
         current = current->next;
     }
 }
-// Count total residents in the linked list
+
 int LinkedList::countResidents() {
     int count = 0;
     Node* current = head;
@@ -78,12 +78,11 @@ int LinkedList::countResidents() {
 }
 
 
-// Return head pointer
 Node* LinkedList::getHead() {
     return head;
 }
 
-// Destructor
+
 LinkedList::~LinkedList() {
     Node* current = head;
 

@@ -178,7 +178,7 @@ void displayCrossDatasetSummary(ResidentData& dataA,
 
 
 
-// MASTER: run the full Task 5 carbon analysis for array-based datasets.
+
 void runCarbonAnalysis(ResidentData& dataA,
                        ResidentData& dataB,
                        ResidentData& dataC) {
@@ -195,8 +195,7 @@ void runCarbonAnalysis(ResidentData& dataA,
 
 
 
-//linked list-based implementation
-//5a sum resident for every resident in linked list dataset
+
 float getTotalDatasetEmissionLL(LinkedList& list) {
     float total   = 0;
     Node* current = list.getHead();
@@ -238,7 +237,7 @@ void displayEmissionByModeLL(LinkedList& list, const string& datasetName) {
             current = current->next;
         }
  
-        // only print transport modes that appear in this dataset
+        
         if (count > 0) {
             cout << left
                  << setw(24) << C_TRANSPORT_MODES[m]
@@ -254,7 +253,7 @@ void displayEmissionByModeLL(LinkedList& list, const string& datasetName) {
 }
  
 
-//-----------------
+
 
 // 5a + 5b- full carbon analysis table for one linked list dataset
 void displayDatasetAnalysisLL(LinkedList& list, const string& datasetName) {
@@ -341,7 +340,7 @@ void displayCrossDatasetSummaryLL(LinkedList& listA,
 }
  
  
-// MASTER: run the full Task 5 carbon analysis for linked list-based datasets
+
 void runCarbonAnalysisLL(LinkedList& listA,
                          LinkedList& listB,
                          LinkedList& listC) {

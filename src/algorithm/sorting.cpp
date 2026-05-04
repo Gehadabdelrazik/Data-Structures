@@ -4,9 +4,7 @@
 
 using namespace std;
 
-// =====================
-// HELPER FUNCTIONS
-// =====================
+
 
 void swapResident(Resident &a, Resident &b) {
     Resident temp = a;
@@ -18,9 +16,6 @@ double calculateEmission(Resident r) {
     return r.DailyDistance * r.CarbonEmissionFactor * r.AverageDayPerMonth;
 }
 
-// =====================
-// ARRAY SORTING
-// =====================
 
 void bubbleSortArrayByID(Resident arr[], int size) {
     for (int i = 0; i < size - 1; i++) {
@@ -62,9 +57,6 @@ void bubbleSortArrayByCarbon(Resident arr[], int size) {
     }
 }
 
-// =====================
-// LINKED LIST SORTING
-// =====================
 
 void bubbleSortListByID(Node* head) {
     if (!head) return;
@@ -150,9 +142,7 @@ void bubbleSortListByCarbon(Node* head) {
     } while (swapped);
 }
 
-// =====================
-// SORTING EXPERIMENTS
-// =====================
+
 
 void runArraySortingExperiment(Resident arr[], int size) {
 
